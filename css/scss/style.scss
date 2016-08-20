@@ -53,17 +53,22 @@ li:hover > ul.drop-menu li {
 }
 
 
-// MENU 1 
+// MENU 1
 
 
 li:hover > ul.drop-menu.menu-1{
   perspective: 1000px;
   li {
     opacity: 0;
-    animation-name: menu-1;
-    animation-duration: 300ms;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}){
+        animation-name: menu-1;
+        animation-duration: 300ms;
+        animation-delay: (150ms * $i) - 300;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+      }
+    }
   }
   @keyframes menu-1 {
     0% {
